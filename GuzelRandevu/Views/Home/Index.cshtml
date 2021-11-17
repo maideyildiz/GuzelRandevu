@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@{
+    ViewData["Title2"] = _localizer["Güzel Randevuya Hoşgeldiniz"];
+    ViewData["Title3"] = _localizer["İstediğiniz Güzellik Merkezleri'nden kolaylıkla randevunuzu oluşturmanız için sizinleyiz!"];
+}
+@{ ViewData["Title"] = "Güzel Randevu"; }
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+
+<body>
+    <div>
+        <center>
+            <h1 class="display-4">@ViewData["Title2"]</h1>
+            <p>@ViewData["Title3"]</p>
+        </center>
+
+    </div><br />
+    <div class="aw-slider">
+        <div>
+            <a class="ımg_1"><img src="~/css/IMAGES/Image1.jpg" width="300" height="350"></a>
+            <a class="ımg_2"><img src="~/css/IMAGES/Image2.jpg" width="300" height="350"></a>
+            <a class="ımg_3"><img src="~/css/IMAGES/Image3.jpg" width="300" height="350"></a>
+            <a class="ımg_4"><img src="~/css/IMAGES/Image4.jpg" width="300" height="350"></a>
+            <a class="ımg_5"><img src="~/css/IMAGES/Image5.jpg" width="300" height="350"></a>
+            <a class="ımg_6"><img src="~/css/IMAGES/Image6.jpg" width="300" height="350"></a>
+            <a class="ımg_7"><img src="~/css/IMAGES/Image7.jpg" width="300" height="350"></a>
+            <a class="ımg_8"><img src="~/css/IMAGES/Image8.jpg" width="300" height="350"></a>
+            <a class="ımg_9"><img src="~/css/IMAGES/Image9.jpg" width="300" height="350"></a>
+            <a class="ımg_10"><img src="~/css/IMAGES/Image10.jpg" width="300" height="350"></a>
+        </div>
+    </div>
+</body>
+</html>

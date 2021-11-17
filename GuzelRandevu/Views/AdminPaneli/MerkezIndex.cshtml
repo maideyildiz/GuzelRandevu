@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@{
+    ViewData["Title"] = _localizer["Güzellik Merkezleri"];
+    ViewData["Title2"] = _localizer["Güzellik Merkezi Adı"];
+    ViewData["Title3"] = _localizer["Adresi"];
+    ViewData["Title4"] = _localizer["Email Adresi"];
+    ViewData["Title5"] = _localizer["Merkez Ekle"];
+    ViewData["Title6"] = _localizer["Düzenle"];
+    ViewData["Title7"] = _localizer["Sil"];
+    ViewData["Title8"] = _localizer["Detaylar"];
+}
+@model IEnumerable<GuzelRandevu.Models.GuzellikMerkezi>
+
+<h5>@ViewData["Title"]</h5>
+
+<p>
+    <a asp-controller="AdminPaneli" asp-action="MerkezCreate">@ViewData["Title5"]</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @ViewData["Title2"]
+            </th>
+            <th>
+                @ViewData["Title3"]
+            </th>
+            <th>
+                @ViewData["Title4"]
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.merkezResim)" id="admin" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.merkezAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.merkezAdresi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.merkezEmail)
+                </td>
+                <td>
+                    <a asp-action="MerkezEdit" asp-route-id="@item.merkezId"> @ViewData["Title6"]  |</a>
+                    <a asp-action="MerkezDelete" asp-route-id="@item.merkezId">@ViewData["Title7"] |</a>
+                    <a asp-action="MerkezDetails" asp-route-id="@item.merkezId">@ViewData["Title8"]</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

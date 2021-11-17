@@ -1,0 +1,85 @@
+﻿@model IEnumerable<GuzelRandevu.Models.Randevu>
+
+@{
+    ViewData["Title"] = "Randevu Listesi";
+}
+
+<h1>Randevu Listesi</h1>
+
+<p>
+    <a asp-action="Create">Yeni Oluştur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Üye Adı Soyadı
+            </th>
+            <th>
+                Güzellik Merkezi
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.randevuDegerlendirmesi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.randevuPuani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.randevuSaati)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.randevuTuru)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.uye.uyeAdi) @Html.DisplayFor(modelItem => item.uye.uyeSoyadi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.guzellikMerkezi.merkezAdi)
+            </td>
+            @if (DateTime.Now.Date < item.randevuSaati)
+            {
+                <td>
+                    Gerçekleşmedi
+                </td>
+            }
+            else
+            {
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.randevuDegerlendirmesi)
+                </td>
+            }
+            @if (DateTime.Now.Date < item.randevuSaati)
+            {
+                <td>
+                    Gerçekleşmedi
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.randevuPuani)
+                </td>
+
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.randevuSaati)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.randevuTuru)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { merkezId = item.merkezId, uyeId = item.uyeId }) |
+                @Html.ActionLink("Detaylar", "Details", new { merkezId = item.merkezId, uyeId = item.uyeId }) |
+                @Html.ActionLink("Sil", "Delete", new { merkezId = item.merkezId, uyeId = item.uyeId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
